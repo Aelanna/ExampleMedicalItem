@@ -43,6 +43,7 @@
             <DeteriorationRate>2.0</DeteriorationRate>
             <Flammability>0.2</Flammability>
             <MarketValue>20</MarketValue>
+            <WorkToMake>400</WorkToMake>
         </statBases>
 
         <!-- Sets the tech level for this item -->
