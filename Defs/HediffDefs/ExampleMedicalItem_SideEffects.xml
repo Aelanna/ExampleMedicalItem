@@ -1,128 +1,132 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-    <!-- This health difference (hediff) or health condition is essentially identical to food poisoning -->
-    <!-- other than that it does not inhibit blood filtration. -->
-    <HediffDef ParentName="DiseaseBase">
+  <!-- This health difference (hediff) or health condition is essentially identical to food poisoning -->
+  <!-- other than that it does not inhibit blood filtration. -->
+  <HediffDef ParentName="DiseaseBase">
 
-        <!-- defNames must be unique across all mods -->
-        <!-- It's generally recommended that you prefix it with your mod name to prevent mod collisions -->
-        <defName>ExampleMedicalItem_Emetic</defName>
+    <!-- defNames must be unique across all mods -->
+    <!-- It's generally recommended that you prefix it with your mod name to prevent mod collisions -->
+    <defName>ExampleMedicalItem_Emetic</defName>
 
-        <!-- This is the display name of this hediff. It should be lowercase unless it's a proper name -->
-        <!-- Labels will get automatically capitalized by RimWorld's grammar resolver if necessary -->
-        <label>emetic</label>
+    <!-- This is the display name of this hediff. It should be lowercase unless it's a proper name -->
+    <!-- Labels will get automatically capitalized by RimWorld's grammar resolver if necessary -->
+    <label>emetic</label>
 
-        <!-- The full description of this hediff. It is seen by players when inspecting the full stat card -->
-        <description>Side effects from an antiparasitic medication. Causes sickness and vomiting for approximately a day.</description>
+    <!-- The full description of this hediff. It is seen by players when inspecting the full stat card -->
+    <description>Side effects from an antiparasitic medication. Causes sickness and vomiting for approximately a day.</description>
 
-        <!-- The initial severity of this hediff if spawned  -->
-        <initialSeverity>1</initialSeverity>
+    <!-- The initial severity of this hediff if spawned  -->
+    <initialSeverity>1</initialSeverity>
 
-        <!-- Components are used to add additional functionality to a hediff -->
-        <comps>
-            <!-- HediffComp_SeverityPerDay causes the severity of a hediff to go down over time -->
-            <li Class="HediffCompProperties_SeverityPerDay">
-                <!-- -1 means this hediff will fade from full severity in 1 in-game day -->
-                <severityPerDay>-1</severityPerDay>
-            </li>
-        </comps>
+    <!-- Components are used to add additional functionality to a hediff -->
+    <comps>
 
-        <!-- The stages of this hediff, determined by its current severity -->
-        <!-- Note that since this hediff starts at 1 severity and goes down, -->
-        <!-- These stages will happen in reverse order -->
-        <stages>
-            <li>
-                <!-- The label of this stage. Will be displayed as "emetic (recovering)" -->
-                <label>recovering</label>
-                <!-- Causes the afflicted pawn to randomly vomit with a frequency of 0.4 times per day -->
-                <vomitMtbDays>0.4</vomitMtbDays>
-                <!-- Causes 20% pain -->
-                <painOffset>0.2</painOffset>
-                <!-- Modify the Capacities of the pawn -->
-                <!-- <postFactor> means that it is a post-processing multiplier -->
-                <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>0.6</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>0.8</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>0.9</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Eating</capacity>
-                        <postFactor>0.5</postFactor>
-                    </li>
-                </capMods>
-            </li>
-            <li>
-                <!-- The label of this stage. Will be displayed as "emetic (major)" -->
-                <label>major</label>
-                <!-- This stage is active if the hediff is at 0.2 or higher severity -->
-                <minSeverity>0.2</minSeverity>
-                <!-- Causes the afflicted pawn to randomly vomit with a frequency of 0.2 times per day -->
-                <vomitMtbDays>0.2</vomitMtbDays>
-                <!-- Causes 40% pain -->
-                <painOffset>0.4</painOffset>
-                <!-- Modify the Capacities of the pawn -->
-                <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>0.5</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>0.5</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>0.8</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Talking</capacity>
-                        <postFactor>0.8</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Eating</capacity>
-                        <postFactor>0.3</postFactor>
-                    </li>
-                </capMods>
-            </li>
-            <li>
-                <!-- The label of this stage. Will be displayed as "emetic (initial)" -->
-                <label>initial</label>
-                <!-- This stage is active if the hediff is at 0.8 or higher severity -->
-                <minSeverity>0.8</minSeverity>
-                <!-- Causes the afflicted pawn to randomly vomit with a frequency of 0.3 times per day -->
-                <vomitMtbDays>0.3</vomitMtbDays>
-                <!-- Causes 20% pain -->
-                <painOffset>0.2</painOffset>
-                <!-- Modify the Capacities of the pawn -->
-                <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>0.6</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>0.8</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>0.9</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Eating</capacity>
-                        <postFactor>0.5</postFactor>
-                    </li>
-                </capMods>
-            </li>
-        </stages>
-    </HediffDef>
+      <!-- HediffComp_SeverityPerDay causes the severity of a hediff to go down over time -->
+      <li Class="HediffCompProperties_SeverityPerDay">
+
+        <!-- -1 means this hediff will fade from full severity in 1 in-game day -->
+        <severityPerDay>-1</severityPerDay>
+
+      </li>
+
+    </comps>
+
+    <!-- The stages of this hediff, determined by its current severity -->
+    <!-- Note that since this hediff starts at 1 severity and goes down, -->
+    <!-- These stages will happen in reverse order -->
+    <stages>
+      <li>
+        <!-- The label of this stage. Will be displayed as "emetic (recovering)" -->
+        <label>recovering</label>
+        <!-- Causes the afflicted pawn to randomly vomit with a frequency of 0.4 times per day -->
+        <vomitMtbDays>0.4</vomitMtbDays>
+        <!-- Causes 20% pain -->
+        <painOffset>0.2</painOffset>
+        <!-- Modify the Capacities of the pawn -->
+        <!-- <postFactor> means that it is a post-processing multiplier -->
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.6</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.9</postFactor>
+          </li>
+          <li>
+            <capacity>Eating</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <!-- The label of this stage. Will be displayed as "emetic (major)" -->
+        <label>major</label>
+        <!-- This stage is active if the hediff is at 0.2 or higher severity -->
+        <minSeverity>0.2</minSeverity>
+        <!-- Causes the afflicted pawn to randomly vomit with a frequency of 0.2 times per day -->
+        <vomitMtbDays>0.2</vomitMtbDays>
+        <!-- Causes 40% pain -->
+        <painOffset>0.4</painOffset>
+        <!-- Modify the Capacities of the pawn -->
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+          <li>
+            <capacity>Talking</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+          <li>
+            <capacity>Eating</capacity>
+            <postFactor>0.3</postFactor>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <!-- The label of this stage. Will be displayed as "emetic (initial)" -->
+        <label>initial</label>
+        <!-- This stage is active if the hediff is at 0.8 or higher severity -->
+        <minSeverity>0.8</minSeverity>
+        <!-- Causes the afflicted pawn to randomly vomit with a frequency of 0.3 times per day -->
+        <vomitMtbDays>0.3</vomitMtbDays>
+        <!-- Causes 20% pain -->
+        <painOffset>0.2</painOffset>
+        <!-- Modify the Capacities of the pawn -->
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.6</postFactor>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <postFactor>0.9</postFactor>
+          </li>
+          <li>
+            <capacity>Eating</capacity>
+            <postFactor>0.5</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
 
 </Defs>

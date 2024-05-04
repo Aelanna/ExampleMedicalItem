@@ -3,6 +3,7 @@
 
     <!-- {Theraclear} removed {2} condition(s) from {John} -->
     <ExampleMedicalItem_CountConditionsRemoved>{0} removed {1} condition(s) from {2}</ExampleMedicalItem_CountConditionsRemoved>
+
     <!-- {Theraclear} did not remove any conditions from {Jane} -->
     <ExampleMedicalItem_NoConditionsRemoved>{0} did not remove any conditions from {1}</ExampleMedicalItem_NoConditionsRemoved>
 

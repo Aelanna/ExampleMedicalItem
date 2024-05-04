@@ -1,114 +1,122 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-    <!-- Example medical item: theraclear -->
-    <ThingDef ParentName="ResourceBase">
+  <!-- Example medical item: theraclear -->
+  <ThingDef ParentName="ResourceBase">
 
-        <!-- defNames must be unique across all mods -->
-        <!-- It's generally recommended that you prefix it with your mod name to prevent mod collisions -->
-        <defName>ExampleMedicalItem_Theraclear</defName>
+    <!-- defNames must be unique across all mods -->
+    <!-- It's generally recommended that you prefix it with your mod name to prevent mod collisions -->
+    <defName>ExampleMedicalItem_Theraclear</defName>
 
-        <!-- This is the display name of this item. It should be lowercase unless it's a proper name -->
-        <!-- Labels will get automatically capitalized by RimWorld's grammar resolver if necessary -->
-        <label>theraclear</label>
+    <!-- This is the display name of this item. It should be lowercase unless it's a proper name -->
+    <!-- Labels will get automatically capitalized by RimWorld's grammar resolver if necessary -->
+    <label>theraclear</label>
 
-        <!-- The full description of this item. It is seen by players when inspecting the full stat card -->
-        <description>A broad-spectrum antiparasitic and emetic medicine distilled from theragold flowers, theraclear can quickly purge parasitic infections such as gut worms or muscle parasites from a patient but renders them extremely ill for a short time.</description>
+    <!-- The full description of this item. It is seen by players when inspecting the full stat card -->
+    <description>A broad-spectrum antiparasitic and emetic medicine distilled from theragold flowers, theraclear can quickly purge parasitic infections such as gut worms or muscle parasites from a patient but renders them extremely ill for a short time.</description>
 
-        <!-- The C# class that is invoked when an item is created from this Def -->
-        <!-- We are using ThingWithComps so our item can have ThingComps -->
-        <thingClass>ThingWithComps</thingClass>
+    <!-- The C# class that is invoked when an item is created from this Def -->
+    <!-- We are using ThingWithComps so our item can have ThingComps -->
+    <thingClass>ThingWithComps</thingClass>
 
-        <!-- Sets the item graphic for this ThingDef -->
-        <graphicData>
-            <texPath>ExampleMod/Theraclear</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-        </graphicData>
+    <!-- Sets the item graphic for this ThingDef -->
+    <graphicData>
+      <texPath>ExampleMod/Theraclear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
 
-        <!-- Determines the priority of this item when shown in the colony resource overlay -->
-        <resourceReadoutPriority>Last</resourceReadoutPriority>
+    <!-- Determines the priority of this item when shown in the colony resource overlay -->
+    <resourceReadoutPriority>Last</resourceReadoutPriority>
 
-        <!-- When set to true, this item can be damaged and will be destroyed if its hit points reaches zero -->
-        <!-- Many vanilla resources such as Steel cannot actually be damaged -->
-        <useHitPoints>true</useHitPoints>
+    <!-- When set to true, this item can be damaged and will be destroyed if its hit points reaches zero -->
+    <!-- Many vanilla resources such as Steel cannot actually be damaged -->
+    <useHitPoints>true</useHitPoints>
 
-        <!-- When set to false, damage does not affect the market value of this item -->
-        <!-- Set to false because the medicine does not degrade in effectiveness with damage -->
-        <healthAffectsPrice>false</healthAffectsPrice>
+    <!-- When set to false, damage does not affect the market value of this item -->
+    <!-- Set to false because the medicine does not degrade in effectiveness with damage -->
+    <healthAffectsPrice>false</healthAffectsPrice>
 
-        <!-- Determines base stats for this item -->
-        <statBases>
-            <MaxHitPoints>80</MaxHitPoints>
-            <Mass>0.2</Mass>
-            <DeteriorationRate>2.0</DeteriorationRate>
-            <Flammability>0.2</Flammability>
-            <MarketValue>20</MarketValue>
-            <WorkToMake>400</WorkToMake>
-        </statBases>
+    <!-- Determines base stats for this item -->
+    <statBases>
 
-        <!-- Sets the tech level for this item -->
-        <!-- Neolithic is set here for parity with vanilla herbal medicine -->
-        <techLevel>Neolithic</techLevel>
+      <!-- the max hit points of this item -->
+      <MaxHitPoints>80</MaxHitPoints>
+      <!-- the mass of this item in kilograms -->
+      <Mass>0.2</Mass>
+      <!-- the number of hit points this item loses while not stored in a safe place -->
+      <DeteriorationRate>2.0</DeteriorationRate>
+      <!-- the flammability of this item. 1.0 is default -->
+      <Flammability>0.2</Flammability>
+      <!-- the market value of this item in silver -->
+      <MarketValue>20</MarketValue>
+      <!-- the amount of work this item takes to craft -->
+      <WorkToMake>400</WorkToMake>
 
-        <!-- The maximum stack size of this item -->
-        <stackLimit>10</stackLimit>
+    </statBases>
 
-        <!-- This item is in the same category as healer mech serum -->
-        <thingCategories>
-            <li>ItemsMisc</li>
-        </thingCategories>
+    <!-- Sets the tech level for this item -->
+    <!-- Neolithic is set here for parity with vanilla herbal medicine -->
+    <techLevel>Neolithic</techLevel>
 
-        <!-- Components are used to add additional functionality to a Thing -->
-        <comps>
-            <!-- CompUsable is used to designate a Thing as usable by right-clicking it with a pawn selected -->
-            <li Class="CompProperties_Usable">
-                <useJob>UseItem</useJob>
-                <useLabel>Use {0_label}</useLabel>
-                <useDuration>300</useDuration>
-            </li>
-            <!-- This is our custom ThingComp that triggers when this Thing is used -->
-            <li Class="ExampleMedicalItem.CompProperties_RemoveHediffs">
-                <hediffsRemoved>
-                    <li>GutWorms</li>
-                    <li>MuscleParasites</li>
-                </hediffsRemoved>
-                <sideEffects>
-                    <li>ExampleMedicalItem_Emetic</li>
-                </sideEffects>
-            </li>
-            <!-- CompUseEffect_DestroySelf makes this a consumable item by destroying it on use -->
-            <li Class="CompProperties_UseEffectDestroySelf" />
-        </comps>
+    <!-- The maximum stack size of this item -->
+    <stackLimit>10</stackLimit>
 
-        <!-- A cost list is used to determine what is used to craft this item -->
-        <costList>
-            <ExamplePlant_RawTheragold>20</ExamplePlant_RawTheragold>
-        </costList>
+    <!-- This item is in the same category as healer mech serum -->
+    <thingCategories>
+      <li>ItemsMisc</li>
+    </thingCategories>
 
-        <!-- A <recipeMaker> can be used to instruct the game to automatically generate a simple RecipeDef -->
-        <recipeMaker>
-            <!-- The relevant StatDef to use for crafting speed -->
-            <workSpeedStat>DrugCookingSpeed</workSpeedStat>
-            <!-- The SkillDef to determine whether a pawn can craft this item -->
-            <workSkill>Intellectual</workSkill>
-            <!-- The workbenches that this item can be crafted at -->
-            <recipeUsers>
-                <li>CraftingSpot</li>
-                <li>DrugLab</li>
-            </recipeUsers>
-            <!-- The minimum skill levels needed to craft this item -->
-            <skillRequirements>
-                <Crafting>2</Crafting>
-                <Intellectual>2</Intellectual>
-            </skillRequirements>
-            <!-- If set, creates an additional bulk crafting recipe for the specified multiple -->
-            <bulkRecipeCount>4</bulkRecipeCount>
+    <!-- Components are used to add additional functionality to a Thing -->
+    <comps>
+      <!-- CompUsable is used to designate a Thing as usable by right-clicking it with a pawn selected -->
+      <li Class="CompProperties_Usable">
+        <useJob>UseItem</useJob>
+        <useLabel>Use {0_label}</useLabel>
+        <useDuration>300</useDuration>
+      </li>
+      <!-- This is our custom ThingComp that triggers when this Thing is used -->
+      <li Class="ExampleMedicalItem.CompProperties_RemoveHediffs">
+        <hediffsRemoved>
+          <li>GutWorms</li>
+          <li>MuscleParasites</li>
+        </hediffsRemoved>
+        <sideEffects>
+          <li>ExampleMedicalItem_Emetic</li>
+        </sideEffects>
+      </li>
+      <!-- CompUseEffect_DestroySelf makes this a consumable item by destroying it on use -->
+      <li Class="CompProperties_UseEffectDestroySelf"/>
+    </comps>
 
-        </recipeMaker>
+    <!-- A cost list is used to determine what is used to craft this item -->
+    <costList>
+      <ExamplePlant_RawTheragold>20</ExamplePlant_RawTheragold>
+    </costList>
 
-        <!-- The number of this item that can be kept when selling a colony as part of the Archonexus quest -->
-        <allowedArchonexusCount>10</allowedArchonexusCount>
+    <!-- A <recipeMaker> can be used to instruct the game to automatically generate a simple RecipeDef -->
+    <recipeMaker>
+      <!-- The relevant StatDef to use for crafting speed -->
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <!-- The SkillDef to determine whether a pawn can craft this item -->
+      <workSkill>Intellectual</workSkill>
+      <!-- The workbenches that this item can be crafted at -->
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <!-- The minimum skill levels needed to craft this item -->
+      <skillRequirements>
+        <Crafting>2</Crafting>
+        <Intellectual>2</Intellectual>
+      </skillRequirements>
+      <!-- If set, creates an additional bulk crafting recipe for the specified multiple -->
+      <bulkRecipeCount>4</bulkRecipeCount>
 
-    </ThingDef>
+    </recipeMaker>
+
+    <!-- The number of this item that can be kept when selling a colony as part of the Archonexus quest -->
+    <allowedArchonexusCount>10</allowedArchonexusCount>
+
+  </ThingDef>
 
 </Defs>

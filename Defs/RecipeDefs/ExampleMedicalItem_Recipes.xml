@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-    <!-- Example recipe: administer theraclear -->
-    <!-- Allows theraclear to be administered to downed pawns in bed -->
-    <RecipeDef>
+  <!-- Example recipe: administer theraclear -->
+  <!-- Allows theraclear to be administered to downed pawns in bed -->
+  <RecipeDef>
 
-        <!-- defNames must be unique across all mods -->
-        <!-- It's generally recommended that you prefix it with your mod name to prevent mod collisions -->
-        <defName>ExampleMedicalItem_AdministerTheraclear</defName>
+    <!-- defNames must be unique across all mods -->
+    <!-- It's generally recommended that you prefix it with your mod name to prevent mod collisions -->
+    <defName>ExampleMedicalItem_AdministerTheraclear</defName>
 
-        <!-- This is the display name of this recipe. It should be lowercase unless it's a proper name -->
-        <!-- Labels will get automatically capitalized by RimWorld's grammar resolver if necessary -->
-        <label>administer theraclear</label>
+    <!-- This is the display name of this recipe. It should be lowercase unless it's a proper name -->
+    <!-- Labels will get automatically capitalized by RimWorld's grammar resolver if necessary -->
+    <label>administer theraclear</label>
 
-        <!-- The full description of this recipe. It is seen by players when inspecting the full stat card -->
-        <description>Administer theraclear.</description>
+    <!-- The full description of this recipe. It is seen by players when inspecting the full stat card -->
+    <description>Administer theraclear.</description>
 
-        <!-- The C# class that this recipe uses to function. We are using the same one as the healer mech serum -->
-        <workerClass>Recipe_AdministerUsableItem</workerClass>
+    <!-- The C# class that this recipe uses to function. We are using the same one as the healer mech serum -->
+    <workerClass>Recipe_AdministerUsableItem</workerClass>
 
-        <!-- This is the string displayed on a pawn's inspect window when it is using this recipe -->
-        <jobString>Administering theraclear.</jobString>
+    <!-- This is the string displayed on a pawn's inspect window when it is using this recipe -->
+    <jobString>Administering theraclear.</jobString>
 
-        <!-- When set to false, this recipe is applied against to a pawn without targeting a specific body part -->
-        <targetsBodyPart>false</targetsBodyPart>
+    <!-- When set to false, this recipe is applied against to a pawn without targeting a specific body part -->
+    <targetsBodyPart>false</targetsBodyPart>
 
-        <!-- When set to true, applying this recipe will apply anesthetic to the target pawn -->
-        <anesthetize>false</anesthetize>
+    <!-- When set to true, applying this recipe will apply anesthetic to the target pawn -->
+    <anesthetize>false</anesthetize>
 
-        <!-- The amount of work it takes to complete this recipe -->
-        <!-- A pawn with 100% work speed performs 1 work every tick, so 300 ticks would take 5 seconds -->
-        <workAmount>300</workAmount>
+    <!-- The amount of work it takes to complete this recipe -->
+    <!-- A pawn with 100% work speed performs 1 work every tick, so 300 ticks would take 5 seconds -->
+    <workAmount>300</workAmount>
 
-        <!-- Don't show this recipe as an option on pawns if you do not have its ingredients on the map -->
-        <dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
+    <!-- Don't show this recipe as an option on pawns if you do not have its ingredients on the map -->
+    <dontShowIfAnyIngredientMissing>true</dontShowIfAnyIngredientMissing>
 
-        <!-- No random surgery outcome effects -->
-        <surgeryOutcomeEffect IsNull="True"/>
+    <!-- No random surgery outcome effects -->
+    <surgeryOutcomeEffect IsNull="True"/>
 
-        <!-- The <ingredients> list denotes exactly what is consumed when this recipe is used -->
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>ExampleMedicalItem_Theraclear</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
+    <!-- The <ingredients> list denotes exactly what is consumed when this recipe is used -->
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ExampleMedicalItem_Theraclear</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
 
-        <!-- <fixedIngredientFilter> denotes all items that are shown on the bill's ingredient filter -->
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>ExampleMedicalItem_Theraclear</li>
-            </thingDefs>
-        </fixedIngredientFilter>
+    <!-- <fixedIngredientFilter> denotes all items that are shown on the bill's ingredient filter -->
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ExampleMedicalItem_Theraclear</li>
+      </thingDefs>
+    </fixedIngredientFilter>
 
-        <!-- Specifies the workbenches (including pawns!) that can use this recipe -->
-        <!-- Using this allows us to avoid making a PatchOperation -->
-        <recipeUsers>
-            <li>Human</li>
-        </recipeUsers>
+    <!-- Specifies the workbenches (including pawns!) that can use this recipe -->
+    <!-- Using this allows us to avoid making a PatchOperation -->
+    <recipeUsers>
+      <li>Human</li>
+    </recipeUsers>
 
-    </RecipeDef>
+  </RecipeDef>
 
 </Defs>
